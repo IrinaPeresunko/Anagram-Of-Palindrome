@@ -18,11 +18,11 @@ public class AnagramOfPalindrome {
 			return false;		
 		}
 	}
-	public static void main(String[] args) {
-		String input = "Doc, note: I dissent. A fast never prevents a fatness. I diet on cod.";
+	public static boolean checkingForAnagramOfPalindrome(String input){
 		int N=input.length();
 		boolean isAnagramOfPalindrome=true;
-		for(int i=0,j=N-1;i<N/2 && j>N/2;i++,j--){
+		
+		for(int i=0,j=N-1;i<N/2 && j>N/2-1;i++,j--){
 			if(checkingForPunctuationAndSpaces(input.toLowerCase().charAt(i))){
 				while(checkingForPunctuationAndSpaces(input.toLowerCase().charAt(i)) && i<N/2){
 					i++;
@@ -38,14 +38,27 @@ public class AnagramOfPalindrome {
 				break;
 			}
 		}
+		return isAnagramOfPalindrome;
+	}
+	public static void main(String[] args) {
+		String[] input = new String[5];
 		
-		if(isAnagramOfPalindrome==true){
-			System.out.println("String is an anagram of a palindrome.");
+		input[0] = "Doc, note: I dissent. A fast never prevents a fatness. I diet on cod.";
+		input[1] = "kayak";
+		input[2] = "Rats live on no evil star";
+		input[3] = "A man, a plan, a canal, Panama";
+		input[4]= "test";
+		
+		for(int i=0;i<input.length;i++){
+			if(checkingForAnagramOfPalindrome(input[i])){
+				System.out.println(input[i] + " - is an anagram of a palindrome.");
+			}
+			else{
+				System.out.println(input[i] + " - is not an anagram of a palindrome.");
+			}
+			
+			System.out.println("_________________________________");
 		}
-		else{
-			System.out.println("String is not an anagram of a palindrome.");
-		}
-
 	}
 	
 }
